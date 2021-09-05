@@ -8,5 +8,6 @@
     salary: '',
     jobNum: '',
     jobDetail: '',
-    jobRequire:['','','','']
+    jobRequire:['','','',''],
+    timeStamp: date
 }

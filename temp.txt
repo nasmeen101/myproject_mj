@@ -6,4 +6,3 @@ db.createUser(
   }
 )
 
-mongodb://admin_me:mypasspuang@t2u-th.com:27017

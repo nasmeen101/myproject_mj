@@ -1,0 +1,9 @@
+python with mongo: https://www.mongodb.com/languages/python 
+
+Unclear in VS Code:
+Could not import pymongo and can't run by click at top-right run botton.
+Can run at terminal dirictly with : python .\jobThai.py
+Note: install pymongo: python -m pip install pymongo
+
+joson.dumbs(pythonArray) --> convert python array to json string with encoded (unreadable)
+json.loads( json.dumbs(pythonArray) ) --> decode string to readable string
