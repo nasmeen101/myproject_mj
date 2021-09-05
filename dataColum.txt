@@ -1,0 +1,12 @@
+{
+    jobId:'xxxx',
+    jobUrl: 'https://xxx',
+    companyUrl: 'https://yyy',
+    jobTitle: '',
+    companyName: '',
+    location: '',
+    salary: '',
+    jobNum: '',
+    jobDetail: '',
+    jobRequire:['','','','']
+}
