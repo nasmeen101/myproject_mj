@@ -1,0 +1,43 @@
+technical note: https://docs.google.com/document/d/1IWg1UoZ1Wp8zcqPjcXOL4gDjmhuseSeiOz0KFvMKPsA/edit?usp=sharing
+official mongo installation: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/ 
+official mongo access control: https://docs.mongodb.com/manual/tutorial/enable-authentication/ 
+
+1. installation: execute install-mongo.sh
+note need to add execute permission to file first: sudo chmod +x install-mongo.sh
+
+2. create admin password
+mongosh
+use admin
+db.createUser(
+  {
+    user: "myAdminAccount",
+    pwd: passwordPrompt(), // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+# may add more users for desire db like:
+use jobThai
+db.createUser(
+  {
+    user: "jouThaiUsr01",
+    pwd:  passwordPrompt(), 
+    roles: [ { role: "readWrite", db: "jobThai" } ]
+  }
+)
+
+3. edit config file for accept all ip and enable authentication
+sudo vi /etc/mongod.conf
+# set bindIp to 0.0.0.0 for accept all ip connection
+net:
+    port: 27017
+    bindIp: 0.0.0.0
+# enable authentication
+security:
+    authorization: enabled
+
+4. restart mongod then check status (if "failed" try to reboot machine for fixing)
+sudo systemctl restart mongod
+sudo systemctl status mongod
+
+
