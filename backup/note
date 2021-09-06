@@ -1,0 +1,25 @@
+This roject
+
+data structure
+{
+    jobId:'xxxx',
+    jobUrl: 'https://xxx',
+    companyUrl: 'https://yyy',
+    jobTitle: '',
+    companyName: '',
+    location: '',
+    salary: '',
+    jobNum: '',
+    jobDetail: '',
+    jobRequire:['','','',''],
+    timeStamp: date
+}
+
+# mongodb create admin user
+db.createUser(
+  {
+    user: "admin_me",
+    pwd: passwordPrompt(), // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
