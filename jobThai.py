@@ -14,6 +14,7 @@ dbname = get_database()
 collectionJobList = dbname["jobList"]
 
 # global variable
+isDebugMode = False
 jobIdArr = []
 jobUrlArr = []
 companyUrlArr = []
@@ -32,9 +33,10 @@ jobRequireArr   = []
 preJobUrl = "https://www.jobthai.com/th/job/"
 preCompanyUrl = "https://www.jobthai.com/th/company/job/"
 
-lastPage = 76
+startPage = 54
+lastPage = 77
 for x in range(lastPage):
-    page = x+1
+    page = x+startPage
     #page = random.randint(1,76)
     url = "https://www.jobthai.com/%E0%B8%AB%E0%B8%B2%E0%B8%87%E0%B8%B2%E0%B8%99/%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C-it-%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B9%80%E0%B8%A1%E0%B8%AD%E0%B8%A3%E0%B9%8C/"
     url = url + str(page)
@@ -112,8 +114,11 @@ for x in range(lastPage):
 
                 # find jor requirment
                 posReqTagAll = soupJob.find("div", {"class":"jltwsh-0 gkuvRx"})
-                for valLi in posReqTagAll.find_all('li'):
-                    jobRequireArr.append(str(valLi.text))
+                if not(posReqTagAll is None): # avoid no tag found
+                    liTagAll = posReqTagAll.find_all('li')
+                    if not(liTagAll is None): # avoid no tag found
+                        for valLi in liTagAll:
+                            jobRequireArr.append(str(valLi.text))
 
                 # verify data before add to db
                 isHasAllData = True
@@ -162,17 +167,18 @@ for x in range(lastPage):
                     print("job added (delay ", delayBetweenJob, " sec)")
                     time.sleep(delayBetweenJob)
                     
-                    # print test
-                    # print("\n")
-                    # print("Extracted data page = "  ,page)
-                    # print("jobTitle = "             ,jobTitle) 
-                    # print("companyName = "          ,companyName)
-                    # print("location = "             ,location)
-                    # print("salary = "               ,salary)
-                    # print("jobNum = "               ,jobNum)
-                    # print("jobDetail = "            ,jobDetail)
-                    # print("jobRequire = ")
-                    # print(*jobRequireArr, sep='\n')   
+                    if isDebugMode == True:
+                        # print test
+                        print("\n")
+                        print("Extracted data page = "  ,page)
+                        print("jobTitle = "             ,jobTitle) 
+                        print("companyName = "          ,companyName)
+                        print("location = "             ,location)
+                        print("salary = "               ,salary)
+                        print("jobNum = "               ,jobNum)
+                        print("jobDetail = "            ,jobDetail)
+                        print("jobRequire = ")
+                        print(*jobRequireArr, sep='\n')   
                 else:
                     print(" some data missing, skip this job")
                     # save job detail page by jobId as html file
@@ -182,9 +188,10 @@ for x in range(lastPage):
                     with io.open(fileName, "w", encoding="utf-8") as f:
                         f.write(soupJob.prettify())
 
-                # stop loop for test
-                # if count == 1:
-                #     break
+                if isDebugMode == True:
+                    # stop loop for test
+                    if count == 1:
+                        break
             # end job fetch loop
         # clear array
         jobIdArr.clear()
@@ -198,6 +205,10 @@ for x in range(lastPage):
         time.sleep(delayNoNewJob)
     print("page ", page, " / add new ", countNewAdded, " jobs")
     countNewAdded = 0
+
+    # stop loop if last page reached
+    if page == lastPage:
+        break
 
     
     
