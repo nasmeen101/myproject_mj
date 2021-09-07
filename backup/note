@@ -1,5 +1,12 @@
 This roject
 
+jobTitle
+{
+  jobId: "",
+  word: "",
+  seqNum: n
+}
+
 data structure
 {
     jobId:'xxxx',
