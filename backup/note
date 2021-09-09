@@ -1,5 +1,19 @@
 This roject
 
+same word 
+programmer Programmer โปรแกรมเมอร์ ผู้พัฒนา
+system System ระบบ
+วิเคราะห์ Analyst Analyst
+Website เว็บไซต์
+IT Support ITSupport
+IT ไอที
+
+# in collection: jobTitleWord
+{
+  word : "",
+  count :
+}
+# in collection: jobInfo
 jobTitle
 {
   jobId: "",
@@ -7,7 +21,8 @@ jobTitle
   seqNum: n
 }
 
-data structure
+# in collection: jobThai
+job detail
 {
     jobId:'xxxx',
     jobUrl: 'https://xxx',

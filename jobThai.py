@@ -33,7 +33,7 @@ jobRequireArr   = []
 preJobUrl = "https://www.jobthai.com/th/job/"
 preCompanyUrl = "https://www.jobthai.com/th/company/job/"
 
-startPage = 54
+startPage = 1
 lastPage = 77
 for x in range(lastPage):
     page = x+startPage
@@ -183,7 +183,7 @@ for x in range(lastPage):
                     print(" some data missing, skip this job")
                     # save job detail page by jobId as html file
                     fileName = "p" + str(page) + "_n" + str(((countJob+1)+(page-1)*20)) + "_jobId" + jobIdArr[countJob] + ".html"
-                    fileName = "\\jobDetail\\" + fileName
+                    fileName = "\\jobDetail4debug\\" + fileName
                     fileName = os.getcwd()+fileName
                     with io.open(fileName, "w", encoding="utf-8") as f:
                         f.write(soupJob.prettify())
