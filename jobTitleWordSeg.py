@@ -3,6 +3,7 @@ from pythainlp import word_tokenize, Tokenizer
 from pythainlp.util import dict_trie
 from pythainlp.corpus.common import thai_words
 from connectMongo import get_database
+from customWords import customWords
 import math
 
 # connect db
@@ -13,10 +14,9 @@ collectionJobTitleWord = db["jobTitleWord"]
 # get rows number
 allRowsNum = collectionJobList.count_documents({})
 
-words = ["C++", "c++", "C#", "c#", ".net", ".NET", ".Net", "IT Support"]
 custom_words_list = set(thai_words())
 ## add multiple words
-custom_words_list.update(words)
+custom_words_list.update(customWords)
 ## add word
 trie = dict_trie(dict_source=custom_words_list)
 custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm', keep_whitespace=False)

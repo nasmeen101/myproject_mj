@@ -1,5 +1,35 @@
 This roject
 
+mongodb syntax
+{jobTitle:/.*Analyst.*/}
+
+Jobs
+System Analyst
+System Analyst (SA)
+system analyst
+นักวิเคราะห์ระบบ
+
+Data Analyst
+Data Scientist Analyst
+Data Scientist
+วิเคราะห์ข้อมูล
+
+Business Analyst
+Business Analyst (BA)
+
+Programmer Analyst
+นักวิเคราะห์โปรแกรม
+วิเคราะห์แอปพลิเคชัน
+Software Analyst
+
+Technical Analyst
+IT Analyst
+
+SAP Support Analyst
+
+Security Analyst
+Cyber Security
+
 same word 
 programmer Programmer โปรแกรมเมอร์ ผู้พัฒนา
 system System ระบบ
@@ -7,6 +37,9 @@ system System ระบบ
 Website เว็บไซต์
 IT Support ITSupport
 IT ไอที
+
+qury case insesitive
+https://stackoverflow.com/questions/1863399/mongodb-is-it-possible-to-make-a-case-insensitive-query
 
 # in collection: jobTitleWord
 {
