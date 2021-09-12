@@ -42,8 +42,10 @@ for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
                 "seqNum": wordSeq
             }
             collectionJobTitleWord.insert_one(word)
-        print(jobNum, end =" ")
-        print(jobTitleWords, " segmented and added to db")
+        if(jobNum%100)==0:
+            print(jobNum, end =" ")
+            print(" segmented and added to db")
+            #print(jobTitleWords, " segmented and added to db")
         jobNum = jobNum+1
         #print("custom :", custom_tokenizer.word_tokenize(job["jobTitle"]))
     # print("\n")

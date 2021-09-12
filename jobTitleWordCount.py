@@ -24,7 +24,8 @@ for word in words:
             "count"  : wordCount
     }
     collectionJobTitleWordCount.insert_one(wordCount2Db)
-    print("added ", row)
+    if(row%100)==0:
+        print("added ", row)
     row = row + 1
 
     # result.find().sort("_id"):

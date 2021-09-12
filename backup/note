@@ -78,3 +78,13 @@ db.createUser(
     roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
   }
 )
+
+
+
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m 
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install pythainlp
+
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install epitran
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install sklearn_crfsuite
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install tensorflow deepcut
+C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install attacut
