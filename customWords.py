@@ -6,7 +6,7 @@ fullStack   = [ "full stack", "Full Stack", "Fullstack", "Full stack", "Full-Sta
                 "FullStack"]
 frontEnd    = [ "Frontend","Front – end", "Front-end",  "Front end" ]
 backEnd     = [ "Backend" ,"Back - end",  "Back-end",   "Back end"]
-programmer  = [ "Programmer", "Programmers", "โปรแกรมเมอร์"]
+programmer  = [ "Programmer", "programmer", "Programmers","programmers", "โปรแกรมเมอร์"]
 sysAnalyst  = [ "System Analyst", "system analyst", "วิเคราะห์ระบบ" ]
 dataAnalyst = [ "Data Analyst", "Data Scientist", "data analyst", "data scientist", "วิเคราะห์ข้อมูล"]
 busAnalyst  = [ "Business Analyst", "business analyst"]                
