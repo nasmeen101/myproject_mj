@@ -1,4 +1,5 @@
 from connectMongo import get_database
+from datetime import datetime
 
 # connect db
 db = get_database()
@@ -21,7 +22,8 @@ for word in words:
     # add word and count to db
     wordCount2Db = {
             "word" : word,
-            "count"  : wordCount
+            "count"  : wordCount,
+            "timeStamp" : datetime.today().replace(microsecond=0)
     }
     collectionJobTitleWordCount.insert_one(wordCount2Db)
     if(row%100)==0:

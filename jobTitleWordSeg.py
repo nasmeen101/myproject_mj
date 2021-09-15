@@ -38,10 +38,10 @@ for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
             #print(wordSeq," ", jobTitleWord)
             wordSeq = wordSeq+1
             word = {
-                "jobId" : job["jobId"],
-                "word"  : jobTitleWord,
-                "seqNum": wordSeq,
-                "timeStamp"     : datetime.today().replace(microsecond=0)
+                "jobId"     : job["jobId"],
+                "word"      : jobTitleWord,
+                "seqNum"    : wordSeq,
+                "timeStamp" : datetime.today().replace(microsecond=0)
             }
             collectionJobTitleWord.insert_one(word)
         if(jobNum%100)==0:
