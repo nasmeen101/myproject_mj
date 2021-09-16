@@ -5,6 +5,7 @@ from pythainlp.corpus.common import thai_words
 from connectMongo import get_database
 from customWords import customWords
 import math
+from datetime import datetime
 
 # connect db
 db = get_database()
@@ -40,7 +41,8 @@ for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
             word = {
                 "jobId" : job["jobId"],
                 "wordJobDetail"  : jobDetailWord,
-                "seqNum": wordSeq
+                "seqNum": wordSeq,
+                "timestamp" : datetime.today().replace(microsecond=0)
             }
             collectionJobDetailWord.insert_one(word)
         print(jobNum,  "added")
