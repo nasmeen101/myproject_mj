@@ -23,7 +23,7 @@ for word in words:
     wordCount2Db = {
             "word" : word,
             "count"  : wordCount,
-            "timeStamp" : datetime.today().replace(microsecond=0)
+            "timestamp" : datetime.today().replace(microsecond=0)
     }
     collectionJobTitleWordCount.insert_one(wordCount2Db)
     if(row%100)==0:
