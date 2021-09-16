@@ -1,24 +1,53 @@
-from connectMongo import get_database
-from datetime import datetime
-# connect db
-db = get_database()
-collectionNoMeaningWord = db["noMeaningWord"]
+# add no meaning word to db
+isAddNoMeanWord = True
+def addNoMeanWord(wordList):
+    from connectMongo import get_database
+    from datetime import datetime
+    # connect db
+    db = get_database()
+    collectionNoMeaningWord = db["noMeaningWord"]
 
-# no meaning word for jot title
-noMeanWord1 = ['(',')','/','IT','เจ้าหน้าที่',',','Support','SUPPORT','System','-','ประจำ','&','ระบบ','K','พัฒนา','.']
-noMeanWord2 = ['Project','Technical','Officer','1','นัก','สารสนเทศ','T','Service','คอมพิวเตอร์','and']
-noMeanWord3 = ['ใหม่','จบ','–','รับ','สาขา','Data','สาขา','สัญญาจ้าง','นักศึกษา','Desk','และ','Front','End','**']
-noMeanWord4 = ['สำนักงานใหญ่','*','Development','support','สนับสนุน','เทคโนโลยีสารสนเทศ','ที่','@','จ.']
-noMeanWord5 = ['งาน','ยินดี','3','Company','ทำงาน','[','ไอที','Staff','staff','2','Analyst','บริษัท','ได้']
-noMeanWord6 = ['ปฏิบัติงาน','Solution','Quality','ฝ่าย','พนักงาน','รับสมัคร','บาง','ไทย','Job','หรือ','ใกล้']
-noMeanWord7 = ['ติดต่อ','อ.','Back',')(','Services','or','Product']
-
-noMeanWordAll = noMeanWord1 + noMeanWord2 + noMeanWord3 + noMeanWord4 + noMeanWord5 + noMeanWord6 + noMeanWord7
-
-for word in noMeanWordAll:
-    wordAdd = {
-                "word" : word,
+    for w in wordList:
+        # insert if not exist
+        if collectionNoMeaningWord.count_documents({"word":w}) == 0:
+            wordAdd = {
+                "word" : w,
                 "timestamp" : datetime.today().replace(microsecond=0)
             }
-    # insert if not exist (set upsert to True)
-    collectionNoMeaningWord.update_one({"word":word},{"$set": wordAdd},True)
+            collectionNoMeaningWord.insert_one(wordAdd)
+
+# no meaning word for jot title
+noMeanWord1 = ['(',')','/',')/',':(','[',']',')]','+','+','*','IT',':',',','-','–','&','@','K','.','!!!!']
+noMeanWord2 = ['Project','Technical','Officer','1','นัก','T','Service','คอมพิวเตอร์','and']
+noMeanWord3 = ['ใหม่','Data','นักศึกษา','Desk','และ','Front','End','**']
+noMeanWord4 = ['Development']
+noMeanWord5 = ['งาน','ยินดี','3','Company','ไอที','Staff','staff','2','Analyst','บริษัท','ได้']
+noMeanWord6 = ['Solution','Quality','ฝ่าย','รับสมัคร','บาง','ไทย','Job','หรือ','ใกล้']
+noMeanWord7 = ['ติดต่อ','อ.','Back',')(','Services','or','Product','คุณ','ที่ไหน']
+noMeanWordS = ['Section','Support','SUPPORT','System','Systems','support']
+noMeanWordJau   = ['จาก','เจ้าหน้าที่','จบ','จ.','จังหวัด']
+noMeanWordTor   = ['ที่ไหน','เทคโนโลยีสารสนเทศ','ที่','ทำงาน']
+noMeanWordPor   = ['ประจำ','ปฏิบัติงาน']
+moMeanWordRor   = ['ระบบ','รับ']
+noMeanWordPorP  = ['พัฒนา','พนักงาน']
+noMeanWordOr    = ['อุตสาหกรรม']
+noMeanWordSor   = ['สารสนเทศ','สนับสนุน','สาขา','สัญญาจ้าง','สาขา','สำนักงานใหญ่']
+noMeanWordDoor  = ['ดูแล','เดือน']
+
+if isAddNoMeanWord:
+    addNoMeanWord(noMeanWord1)
+    addNoMeanWord(noMeanWord2)
+    addNoMeanWord(noMeanWord3)
+    addNoMeanWord(noMeanWord4)
+    addNoMeanWord(noMeanWord5)
+    addNoMeanWord(noMeanWord6)
+    addNoMeanWord(noMeanWord7)
+    addNoMeanWord(noMeanWordS)
+    addNoMeanWord(noMeanWordJau)
+    addNoMeanWord(noMeanWordTor)
+    addNoMeanWord(noMeanWordPor)
+    addNoMeanWord(moMeanWordRor)
+    addNoMeanWord(noMeanWordPorP)
+    addNoMeanWord(noMeanWordOr)
+    addNoMeanWord(noMeanWordSor)
+    addNoMeanWord(noMeanWordDoor)  
