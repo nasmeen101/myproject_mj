@@ -36,6 +36,10 @@ for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
         jobTitleWords = custom_tokenizer.word_tokenize(job["jobTitle"])
         for jobTitleWord in jobTitleWords:
             #print(wordSeq," ", jobTitleWord)
+            # skip duplicate word
+            if collectionJobTitleWord.count_documents({"jobId":job["jobId"],"word":jobTitleWord}):
+                continue
+            # add only new word found
             wordSeq = wordSeq+1
             word = {
                 "jobId"     : job["jobId"],
