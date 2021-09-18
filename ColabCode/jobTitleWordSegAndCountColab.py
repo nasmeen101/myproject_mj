@@ -20,8 +20,7 @@ def get_database():
     # Create the database for our example (we will use the same database throughout the tutorial
     return client['jobThai']
 db = get_database()
-
-
+collectionJobList = db["jobList"]
 
 def getCusWordList():
     # connect db
@@ -36,23 +35,22 @@ def getCusWordList():
     return allCusWords
 
 customWords = getCusWordList()
-
-# create collection
-collectionJobList = db["jobList"]
-collectionJobTitleWord = db["jobTitleWord"]
-# drop old collection before start new segmentation and counting
-collectionJobTitleWord.drop()
-
-# get rows number
-allRowsNum = collectionJobList.count_documents({})
-
 custom_words_list = set(thai_words())
 ## add multiple words
 custom_words_list.update(customWords)
 ## add word
 trie = dict_trie(dict_source=custom_words_list)
 custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm', keep_whitespace=False)
-#custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm')
+
+###################### Config for Colab ###############################################
+
+# create collection
+collectionJobTitleWord = db["jobTitleWord"]
+# drop old collection before start new segmentation and counting
+collectionJobTitleWord.drop()
+
+# get rows number
+allRowsNum = collectionJobList.count_documents({})
 
 # travel through all rows
 print("Start job title word segmentation")
