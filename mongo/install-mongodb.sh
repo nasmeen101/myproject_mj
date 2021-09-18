@@ -7,4 +7,3 @@ yes Y | sudo apt-get install mongodb-org
 sudo systemctl start mongod
 sudo systemctl enable mongod
 sudo systemctl status mongod
-
