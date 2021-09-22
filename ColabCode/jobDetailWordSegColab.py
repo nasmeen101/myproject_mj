@@ -35,25 +35,27 @@ def getCusWordList():
         allCusWords.append(w['simWord'])
     return allCusWords
 
-customWords = getCusWordList()
-custom_words_list = set(thai_words())
-## add multiple words
-custom_words_list.update(customWords)
-## add word
-trie = dict_trie(dict_source=custom_words_list)
-custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm', keep_whitespace=False)
+
 
 ############################ config for VS Code #####################################
 
 # create collection
 collectionJobDetailWord = db["jobDetailWord"]
-# get rows number
-allRowsNum = collectionJobList.count_documents({})
 
 def segAll():
-    # travel through all rows
+    # get rows number
+    allRowsNum = collectionJobList.count_documents({})
+    customWords = getCusWordList()
+    custom_words_list = set(thai_words())
+    ## add multiple words
+    custom_words_list.update(customWords)
+    ## add word
+    trie = dict_trie(dict_source=custom_words_list)
+    custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm', keep_whitespace=False)
+
     jobPerLoop  = 50    # 50 rows per loop
     jobNum      = 1
+    wordNum     = 1
     for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
         # find find(
         #           {}->select all ,
@@ -61,14 +63,21 @@ def segAll():
         #           currSet*jobPerLoop->skip from first ,
         #           jobPerLoopall->limit per query 
         jobs = collectionJobList.find({},None,currSet*jobPerLoop,jobPerLoop)
+        # travel through all job rows
         for job in jobs:
             wordSeq = 1
             jobDetailWords = custom_tokenizer.word_tokenize(job["jobDetail"])
+            # check existing job
+            isJobExist = False
+            if( not(collectionJobDetailWord.find_one({"jobId":job["jobId"]},{'seqNum':1,'_id':0}) is None) ):
+                isJobExist = True
+            # travel through all word rows
             for jobDetailWord in jobDetailWords:
-                # skip exixting word
-                if collectionJobDetailWord.count_documents({"jobId":job["jobId"],"wordJobDetail":jobDetailWord})!=0:
+                # skip existing word in existing job
+                if isJobExist and not( collectionJobDetailWord.find_one({"jobId":job["jobId"],"wordJobDetail":jobDetailWord},{'seqNum':1,'_id':0}) in None ):
                     continue
                 wordSeq = wordSeq+1
+                wordNum = wordNum+1
                 word = {
                     "jobId" : job["jobId"],
                     "wordJobDetail"  : jobDetailWord,
@@ -76,9 +85,11 @@ def segAll():
                     "timestamp" : datetime.today().replace(microsecond=0)
                 }
                 collectionJobDetailWord.insert_one(word)
-                jobNum = jobNum+1
-            if (jobNum%1000)==0:
-                print(jobNum,  "added")
+                if (wordNum%1000)==0:
+                    print('Word num ', wordNum,  "added")
+            jobNum = jobNum+1
+            if (jobNum%100)==0:
+                print('jobNum ', jobNum,  "added")
 
 segAll()
             
