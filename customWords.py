@@ -19,86 +19,98 @@ def addCusWord(mean,simWordList):
                             'timestamp':datetime.today().replace(microsecond=0)}
             collectionSimilarWord.insert_one(newSimWord)
 
-# job titles
-# insert if not exist (set upsert to True)
-itSupport   = [ "IT Support" ]
-fullStack   = [ "full stack", "Full Stack", "Fullstack", "Full stack", "Full-Stack", "Full-Stacked",
-                "FullStack"]
-frontEnd    = [ "Frontend","Front – end", "Front-end",  "Front end" ]
-backEnd     = [ "Backend" ,"Back - end",  "Back-end",   "Back end"]
-programmer  = [ "Programmer", "programmer", "Programmers","programmers", "โปรแกรมเมอร์"]
-developer   = [ 'Developer','developer','นักพัฒนา']
-sysAnalyst  = [ "System Analyst", "system analyst", "วิเคราะห์ระบบ" ]
-dataAnalyst = [ "Data Analyst", "Data Scientist", "data analyst", "data scientist", "วิเคราะห์ข้อมูล"]
-busAnalyst  = [ "Business Analyst", "business analyst"]              
-progAnalyst = [ "Programmer Analyst", "programmer analyst", "วิเคราะห์โปรแกรม", "วิเคราะห์แอปพลิเคชัน"]  
-softAnalyst = [ "Software Analyst", "software analyst", "SAP Support Analyst",
-                "Technical Analyst", "technical analyst", "IT Analyst"]              
-secAnalyst  = [ "Security Analyst", "security analyst", "Cyber Security", "cyber security"]  
-webMaster   = [ 'Webmaster', 'web master', 'Web master', 'ผู้ดูแลเว็บไซต์', 'เว็บแอดมิน']
-tester      = [ 'Tester','Test Engineer', 'Software Tester','Software Testers','Software Test','Software Test Engineer','Software Quality Assurance','เทสเตอร์']
+def addNewCusWord():
+    # job titles
+    # insert if not exist (set upsert to True)
+    itSupport   = [ "IT Support" ]
+    fullStack   = [ "full stack", "Full Stack", "Fullstack", "Full stack", "Full-Stack", "Full-Stacked",
+                    "FullStack"]
+    frontEnd    = [ "Frontend","Front – end", "Front-end",  "Front end" ]
+    backEnd     = [ "Backend" ,"Back - end",  "Back-end",   "Back end"]
+    programmer  = [ "Programmer", "programmer", "Programmers","programmers", "โปรแกรมเมอร์"]
+    developer   = [ 'Developer','developer','นักพัฒนา']
+    sysAnalyst  = [ "System Analyst", "system analyst", "วิเคราะห์ระบบ" ]
+    dataAnalyst = [ "Data Analyst", "Data Scientist", "data analyst", "data scientist", "วิเคราะห์ข้อมูล"]
+    busAnalyst  = [ "Business Analyst", "business analyst"]              
+    progAnalyst = [ "Programmer Analyst", "programmer analyst", "วิเคราะห์โปรแกรม", "วิเคราะห์แอปพลิเคชัน"]  
+    softAnalyst = [ "Software Analyst", "software analyst", "SAP Support Analyst",
+                    "Technical Analyst", "technical analyst", "IT Analyst"]              
+    secAnalyst  = [ "Security Analyst", "security analyst", "Cyber Security", "cyber security"]  
+    webMaster   = [ 'Webmaster', 'web master', 'Web master', 'ผู้ดูแลเว็บไซต์', 'เว็บแอดมิน']
+    tester      = [ 'Tester','Test Engineer', 'Software Tester','Software Testers','Software Test','Software Test Engineer','Software Quality Assurance','เทสเตอร์']
 
-if isAddNewCusWord:
-    addCusWord('itSupport'  ,itSupport)
-    addCusWord('fullStack'  ,fullStack)
-    addCusWord('frontEnd'   ,frontEnd)
-    addCusWord('backEnd'    ,backEnd)
-    addCusWord('programmer' ,programmer)
-    addCusWord('developer'  ,developer)
-    addCusWord('sysAnalyst' ,sysAnalyst)
-    addCusWord('dataAnalyst',dataAnalyst)
-    addCusWord('busAnalyst' ,busAnalyst)
-    addCusWord('progAnalyst',progAnalyst)
-    addCusWord('softAnalyst',softAnalyst)
-    addCusWord('secAnalyst' ,secAnalyst)
-    addCusWord('webMaster'  ,webMaster)
-    addCusWord('tester'     ,tester)
+    if isAddNewCusWord:
+        addCusWord('itSupport'  ,itSupport)
+        addCusWord('fullStack'  ,fullStack)
+        addCusWord('frontEnd'   ,frontEnd)
+        addCusWord('backEnd'    ,backEnd)
+        addCusWord('programmer' ,programmer)
+        addCusWord('developer'  ,developer)
+        addCusWord('sysAnalyst' ,sysAnalyst)
+        addCusWord('dataAnalyst',dataAnalyst)
+        addCusWord('busAnalyst' ,busAnalyst)
+        addCusWord('progAnalyst',progAnalyst)
+        addCusWord('softAnalyst',softAnalyst)
+        addCusWord('secAnalyst' ,secAnalyst)
+        addCusWord('webMaster'  ,webMaster)
+        addCusWord('tester'     ,tester)
 
-# programming languages & database
-langCpp = [ "C++", "c++" ]
-langCsh = [ "C#", "c#" ]
-langNet = [ ".net", ".NET", ".Net" ]
-langVb  = [ "VB", "vb" ]
-react   = [ "React",'react']
-angular = [ "Angular", "angular"]
-flutter = [ "Flutter", 'flutter']
-database = [ 'ฐานข้อมูล','Database','database','data base']
+    # programming languages & database
+    langCpp = [ "C++", "c++" ]
+    langCsh = [ "C#", "c#" ]
+    langNet = [ ".net", ".NET", ".Net" ]
+    langVb  = [ "VB", "vb" ]
+    react   = [ "React",'react']
+    angular = [ "Angular", "angular"]
+    flutter = [ "Flutter", 'flutter']
+    database = [ 'ฐานข้อมูล','Database','database','data base']
 
-if isAddNewCusWord:
-    addCusWord('langCpp'    ,langCpp)
-    addCusWord('langCsh'    ,langCsh)
-    addCusWord('langNet'    ,langNet)
-    addCusWord('langVb'     ,langVb)
-    addCusWord('react'      ,react)
-    addCusWord('angular'    ,angular)
-    addCusWord('flutter'    ,flutter)
-    addCusWord('database'   ,database)
+    if isAddNewCusWord:
+        addCusWord('langCpp'    ,langCpp)
+        addCusWord('langCsh'    ,langCsh)
+        addCusWord('langNet'    ,langNet)
+        addCusWord('langVb'     ,langVb)
+        addCusWord('react'      ,react)
+        addCusWord('angular'    ,angular)
+        addCusWord('flutter'    ,flutter)
+        addCusWord('database'   ,database)
 
-# operating system
-iOS         = ['iOS','IOS']
-androidOS   = ['Android','android']
-linuxOS     = ['Linux','linux']
+    # operating system
+    iOS         = ['iOS','IOS']
+    androidOS   = ['Android','android']
+    linuxOS     = ['Linux','linux']
 
-if isAddNewCusWord:
-    addCusWord('iOS'        ,iOS)
-    addCusWord('androidOS'  ,androidOS)
-    addCusWord('linuxOS'    ,linuxOS)
+    if isAddNewCusWord:
+        addCusWord('iOS'        ,iOS)
+        addCusWord('androidOS'  ,androidOS)
+        addCusWord('linuxOS'    ,linuxOS)
 
-# experience
-jobExp0y = ['จบใหม่']
-jobExp1y = ['1 ปี','1ปี','1 year','1year','1yr.','1yr']
-jobExp2y = ['2 ปี','2ปี','2 year','2year','2 years','2years','2yr.','2yr']
-jobExp3y = ['3 ปี','3ปี','3 year','3year','3 years','3years','3yr.','3yr']
-jobExp5y = ['5 ปี','5ปี','5 year','5year','5 years','5years','5yr.','5yr']
-jobExp10y = ['10 ปี','10ปี','10 year','10year','10 years','10years','10yr.','10yr']
+    # experience
+    jobExp0y = ['จบใหม่']
+    jobExp1y = ['1 ปี','1ปี',
+                '1-2ปี','1-2 ปี','1 - 2ปี','1 - 2 ปี','1- 2ปี','1 -2ปี','1- 2 ปี','1 -2 ปี',
+                '1-3ปี','1-3 ปี','1 - 3ปี','1 - 3 ปี','1- 3ปี','1 -3ปี','1- 3 ปี','1 -3 ปี',
+                '1 year','1year','1yr.','1yr',
+                '1-2years','1-2 years','1-2year','1-2 year',
+                '1-3years','1-3 years','1-3year','1-3 year']
+    jobExp2y = ['2 ปี','2ปี',
+                '1-2ปี','1-2 ปี','1 - 2ปี','1 - 2 ปี','1- 2ปี','1 -2ปี','1- 2 ปี','1 -2 ปี',
+                '2 year','2year','2 years','2years','2yr.','2yr',
+                '1-2years','1-2 years','1-2year','1-2 year']
+    jobExp3y = ['3 ปี','3ปี',
+                '1-3ปี','1-3 ปี','1 - 3ปี','1 - 3 ปี','1- 3ปี','1 -3ปี','1- 3 ปี','1 -3 ปี',
+                '3 year','3year','3 years','3years','3yr.','3yr',
+                '1-3years','1-3 years','1-3year','1-3 year']
+    jobExp5y = ['5 ปี','5ปี','5 year','5year','5 years','5years','5yr.','5yr']
+    jobExp10y = ['10 ปี','10ปี','10 year','10year','10 years','10years','10yr.','10yr']
 
-if isAddNewCusWord:
-    addCusWord('jobExp0y' ,jobExp0y)
-    addCusWord('jobExp1y' ,jobExp1y)
-    addCusWord('jobExp2y' ,jobExp2y)
-    addCusWord('jobExp3y' ,jobExp3y)
-    addCusWord('jobExp5y' ,jobExp5y)
-    addCusWord('jobExp10y' ,jobExp10y)
+    if isAddNewCusWord:
+        addCusWord('jobExp0y' ,jobExp0y)
+        addCusWord('jobExp1y' ,jobExp1y)
+        addCusWord('jobExp2y' ,jobExp2y)
+        addCusWord('jobExp3y' ,jobExp3y)
+        addCusWord('jobExp5y' ,jobExp5y)
+        addCusWord('jobExp10y' ,jobExp10y)
 
 # generate customword list
 def getCusWordList():
@@ -114,9 +126,32 @@ def getCusWordList():
         allCusWords.append(w['simWord'])
     return allCusWords
 
-customWords = getCusWordList()
+def countNewCusWordRowByDate(date):
+    from connectMongo import get_database
+    from datetime import datetime
+    # connect db
+    db = get_database()
+    collectionSimilarWord = db["similarWord"]  
+    return collectionSimilarWord.count_documents({"timestamp": {"$gt": date}})
+
+def getCusWordListByGreaterDate(dateSearch,skip,limit):
+    from connectMongo import get_database
+    from datetime import datetime
+    # connect db
+    db = get_database()
+    collectionSimilarWord = db["similarWord"]
+
+    # query costom words that greater giving date
+    simWords = collectionSimilarWord.find({"timestamp": {"$gt": dateSearch}},{'simWord':1,'_id':0}).skip(skip).limit(limit)
+
+    allCusWords = []
+    for w in simWords:
+        allCusWords.append(w['simWord'])
+    return allCusWords
+
+#customWords = getCusWordList()
 
 # debug
 if isDebug:
-    for w in customWords:
+    for w in getCusWordList():
         print(w)

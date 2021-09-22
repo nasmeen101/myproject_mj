@@ -37,7 +37,7 @@ for currSet in range( math.ceil(allRowsNum/jobPerLoop) ):
         for jobTitleWord in jobTitleWords:
             #print(wordSeq," ", jobTitleWord)
             # skip duplicate word
-            if collectionJobTitleWord.count_documents({"jobId":job["jobId"],"word":jobTitleWord}):
+            if collectionJobTitleWord.count_documents({"jobId":job["jobId"],"word":jobTitleWord})!=0:
                 continue
             # add only new word found
             wordSeq = wordSeq+1

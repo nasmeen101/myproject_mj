@@ -94,3 +94,9 @@ C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip ins
 C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install sklearn_crfsuite
 C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install tensorflow deepcut
 C:/Users/Nattapon.N/AppData/Local/Programs/Python/Python39/python.exe -m pip install attacut
+
+loop 50
+40 jobs ceil 1
+start 0 to 40
+70 jobs ceil 2
+0-40 40-70 
