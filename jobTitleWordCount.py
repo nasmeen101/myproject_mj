@@ -16,7 +16,7 @@ words = collectionJobTitleWord.distinct( "word" )
 #  ]
 # allWords = collectionJobInfo.aggregate( pipeline )
 
-row = 1
+row = 0
 for word in words:
     wordCount = collectionJobTitleWord.count_documents({"word":word})
     # add word and count to db

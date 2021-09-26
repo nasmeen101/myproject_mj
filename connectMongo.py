@@ -13,3 +13,9 @@ def get_database():
 
     # Create the database for our example (we will use the same database throughout the tutorial
     return client['jobThai']
+
+def get_job_thai_db():
+    CONNECTION_STRING = "mongodb://jouThaiUsr01:jobpass@t2u-th.com/jobThai"
+    from pymongo import MongoClient
+    client = MongoClient(CONNECTION_STRING)
+    return client['jobThai']

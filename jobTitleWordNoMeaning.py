@@ -17,22 +17,34 @@ def addNoMeanWord(wordList):
             collectionNoMeaningWord.insert_one(wordAdd)
 
 # no meaning word for jot title
-noMeanWord1 = ['(',')','/',')/',':(','[',']',')]','+','+','*','IT',':',',','-','–','&','@','K','.','!!!!']
+noMeanWord1 = ['(',')',')(','/',')/',':(','[',']',')]','+','+','*','•','IT',':',',','-','–','&','@','K','.','!!!!']
 noMeanWord2 = ['Project','Technical','Officer','1','นัก','T','Service','คอมพิวเตอร์','and']
-noMeanWord3 = ['ใหม่','Data','นักศึกษา','Desk','และ','Front','End','**']
+noMeanWord3 = ['Data','นักศึกษา','Desk','Front','End','**']
 noMeanWord4 = ['Development']
-noMeanWord5 = ['งาน','ยินดี','3','Company','ไอที','Staff','staff','2','Analyst','บริษัท','ได้']
-noMeanWord6 = ['Solution','Quality','ฝ่าย','รับสมัคร','บาง','ไทย','Job','หรือ','ใกล้']
-noMeanWord7 = ['ติดต่อ','อ.','Back',')(','Services','or','Product','คุณ','ที่ไหน']
+noMeanWord5 = ['ยินดี','3','Company','Staff','staff','2','Analyst','บริษัท']
+noMeanWord6 = ['Solution','Quality','ฝ่าย','บาง','Job']
+noMeanWord7 = ['ติดต่อ','อ.','Back','Services','Product','คุณ']
+
+noMeanWordF = ['for']
+noMeanWordI = ['in']
+noMeanwordO = ['of','or']
 noMeanWordS = ['Section','Support','SUPPORT','System','Systems','support']
+noMeanWordT = ['the']
+
+noMeanWordKorr  = ['การ','กับ','ใกล้']
+noMeanWordKor   = ['ของ']
+noMeanWordNgong = ['งาน']
 noMeanWordJau   = ['จาก','เจ้าหน้าที่','จบ','จ.','จังหวัด']
-noMeanWordTor   = ['ที่ไหน','เทคโนโลยีสารสนเทศ','ที่','ทำงาน']
+noMeanWordTor   = ['ที่ไหน','ไทย','เทคโนโลยีสารสนเทศ','ที่','ทำงาน']
+noMeanWordNoor  = ['ใน']
 noMeanWordPor   = ['ประจำ','ปฏิบัติงาน']
-moMeanWordRor   = ['ระบบ','รับ']
-noMeanWordPorP  = ['พัฒนา','พนักงาน']
-noMeanWordOr    = ['อุตสาหกรรม']
-noMeanWordSor   = ['สารสนเทศ','สนับสนุน','สาขา','สัญญาจ้าง','สาขา','สำนักงานใหญ่']
-noMeanWordDoor  = ['ดูแล','เดือน']
+moMeanWordRor   = ['ระบบ','รับ','รับสมัคร']
+noMeanWordLor   = ['และ']
+noMeanWordPorP  = ['พัฒนา','พนักงาน','เพื่อ']
+noMeanWordOr    = ['อุตสาหกรรม','ไอที']
+noMeanWordSor   = ['สารสนเทศ','สนับสนุน','สาขา','สัญญาจ้าง','สาขา','สำนักงานใหญ่','สามารถ']
+noMeanWordDoor  = ['ดูแล','เดือน','ได้','ด้าน']
+noMeanWordHoor  = ['ให้','หรือ','ใหม่']
 
 if isAddNoMeanWord:
     addNoMeanWord(noMeanWord1)
@@ -42,12 +54,24 @@ if isAddNoMeanWord:
     addNoMeanWord(noMeanWord5)
     addNoMeanWord(noMeanWord6)
     addNoMeanWord(noMeanWord7)
+
+    addNoMeanWord(noMeanWordF)
+    addNoMeanWord(noMeanWordI)
+    addNoMeanWord(noMeanwordO)
     addNoMeanWord(noMeanWordS)
+    addNoMeanWord(noMeanWordT)
+
+    addNoMeanWord(noMeanWordKorr)
+    addNoMeanWord(noMeanWordKor)
+    addNoMeanWord(noMeanWordNgong)
     addNoMeanWord(noMeanWordJau)
     addNoMeanWord(noMeanWordTor)
+    addNoMeanWord(noMeanWordNoor)
     addNoMeanWord(noMeanWordPor)
+    addNoMeanWord(noMeanWordLor)
     addNoMeanWord(moMeanWordRor)
     addNoMeanWord(noMeanWordPorP)
     addNoMeanWord(noMeanWordOr)
     addNoMeanWord(noMeanWordSor)
     addNoMeanWord(noMeanWordDoor)  
+    addNoMeanWord(noMeanWordHoor)
