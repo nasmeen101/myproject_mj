@@ -147,6 +147,7 @@ for x in range(lastPage):
                 if isHasAllData == True:
                     # save to db
                     jobDetail2Db = {
+                        'dataOwner'     : 'jobThai',
                         "jobId"         : str(jobIdArr[countJob]),
                         "jobUrl"        : str(jobUrlArr[countJob]),
                         "companyUrl"    : str(companyUrlArr[countJob]),

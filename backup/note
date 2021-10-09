@@ -63,6 +63,7 @@ jobTitle
 # in collection: jobThai
 job detail
 {
+    dataOwner: 'jobThai',
     jobId:'xxxx',
     jobUrl: 'https://xxx',
     companyUrl: 'https://yyy',
