@@ -1,3 +1,5 @@
+from datetime import datetime
+
 def get_database():
     from pymongo import MongoClient
     import pymongo
@@ -17,8 +19,13 @@ def get_database():
 # connect db
 dbname = get_database()
 collectionJobList = dbname["jobList"]
-# collectionJobList.update_many({},{'$rename':{"timeStamp":"timestamp"}})
-collectionJobList.update_many({},{ '$set': {'lastAct':'newAdded'}}) 
+# collectionJobList.update_many({},{'$rename':{"timeStamp":"createDate"}})
+# collectionJobList.update_many({},{ '$set': {'lastAct':'newAdded'}}) 
+# collectionJobList.update_many({},{ '$set': {'updateDate':datetime.today().replace(microsecond=0)}})
+
+collectionJobTitleWord = dbname["jobTitleWord"]
+# collectionJobTitleWord.update_many({},{'$rename':{"timestamp":"createDate"}})
+collectionJobTitleWord.update_many({},{ '$set': {'updateDate':datetime.today().replace(microsecond=0)}}) 
 
 # dbname = get_database()
 # collectionJobList = dbname["jobTitleWord"]

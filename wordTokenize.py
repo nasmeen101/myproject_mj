@@ -72,7 +72,8 @@ class WordTokenize:
                         "word_"+self.srcFieldName  : jobWord,
                         "seqNum": wordSeq,
                         'lastAct': 'newAdded',
-                        "timestamp" : datetime.today().replace(microsecond=0)
+                        "updateDate" : datetime.today().replace(microsecond=0),
+                        'createDate' : datetime.today().replace(microsecond=0)
                     }
                     self.collectionDstCollName.insert_one(word)
                     if (wordNum%1000)==0:
@@ -81,7 +82,7 @@ class WordTokenize:
                 self.collectionSrcJobsCollName.update_one(
                     {'jobId':job["jobId"]},
                     {'$set' : { 'lastAct' :'seg_'+self.srcFieldName,
-                                "timestamp"     : datetime.today().replace(microsecond=0)}})
+                                "updateDate"     : datetime.today().replace(microsecond=0)}})
                 jobNum = jobNum+1
                 if (jobNum%100)==0:
                     print('jobNum ', jobNum,  "added")
