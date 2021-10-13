@@ -5,7 +5,7 @@ class GetJobs:
 
     def getJobThai(self, dbUsr, dbPass, dbName,dstCollName):
         """
-        get jobs from jobTahi 
+        get jobs from jobThai 
         query filter for new job -> {'lastestAction' : 'newAdded'}
         :param dbUsr: database user name
         :param dbPass: database password
@@ -28,7 +28,6 @@ class GetJobs:
         import random   # for random test fetch data (only for test)
         import time     # for delay
         import json     # for convert jobRequireArr to json
-        from connectMongo import get_database
         from datetime import datetime
 
         # connect to db

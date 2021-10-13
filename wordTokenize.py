@@ -27,13 +27,15 @@ class WordTokenize:
         import math
         from datetime import datetime
 
-        from customWords import getCusWordList
+        # from customWords import getCusWordList
+        from customWords import CustomWord
+        cw = CustomWord('jouThaiUsr01','jobpass','jobThai')
         from pythainlp import Tokenizer
         from pythainlp.util import dict_trie
         from pythainlp.corpus.common import thai_words
         custom_words_list = set(thai_words())
         ## add multiple technical words
-        custom_words_list.update(getCusWordList())
+        custom_words_list.update( cw.getTechJobWordList() )
         ## add technical words
         trie = dict_trie(dict_source=custom_words_list)
         custom_tokenizer = Tokenizer(custom_dict=trie, engine='newmm', keep_whitespace=False)
