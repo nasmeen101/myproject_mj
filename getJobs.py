@@ -197,7 +197,7 @@ class GetJobs:
                             countNewAdded = countNewAdded+1
 
                             # delay before fetch new job detail
-                            delayBetweenJob = random.randint(10,30)
+                            delayBetweenJob = random.randint(8,20)
                             print("job added (delay ", delayBetweenJob, " sec)")
                             time.sleep(delayBetweenJob)
                             

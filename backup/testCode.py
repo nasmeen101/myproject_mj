@@ -20,12 +20,26 @@ def get_database():
 dbname = get_database()
 collectionJobList = dbname["jobList"]
 # collectionJobList.update_many({},{'$rename':{"timeStamp":"createDate"}})
-# collectionJobList.update_many({},{ '$set': {'lastAct':'newAdded'}}) 
+collectionJobList.update_many({},{ '$set': {'lastAct':'seg_jobDetail'}}) 
 # collectionJobList.update_many({},{ '$set': {'updateDate':datetime.today().replace(microsecond=0)}})
+# jobPerLoop  = 3  
+# jobs = collectionJobList.find(
+#         {"$or": [   {'lastAct' : 'newAdded'}, 
+#                     {'lastAct' : 'seg_jobTitle'},
+#                     {'lastAct' : "seg_jobDetail"}
+#                 ]},  
+#         {'jobId':1,'jobRequire':1,'jobTitle':1, '_id':0},
+#         0,
+#         jobPerLoop)
+# for job in jobs:
+#     print('r ',isinstance( job['jobRequire'], list))
+#     print('t ',isinstance( job['jobTitle'], list))
+#     # for r in job['jobRequire']:
+#     #     print(r)
 
-collectionJobTitleWord = dbname["jobTitleWord"]
+# collectionJobTitleWord = dbname["jobTitleWord"]
 # collectionJobTitleWord.update_many({},{'$rename':{"timestamp":"createDate"}})
-collectionJobTitleWord.update_many({},{ '$set': {'updateDate':datetime.today().replace(microsecond=0)}}) 
+# collectionJobTitleWord.update_many({},{ '$set': {'updateDate':datetime.today().replace(microsecond=0)}}) 
 
 # dbname = get_database()
 # collectionJobList = dbname["jobTitleWord"]

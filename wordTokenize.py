@@ -24,7 +24,6 @@ class WordTokenize:
         self.collectionDstCollName = self.db[dstCollName]
         self.queryFilter = queryFilter
 
-        import math
         from datetime import datetime
 
         # from customWords import getCusWordList
@@ -46,8 +45,8 @@ class WordTokenize:
         allRowsNum = self.collectionSrcJobsCollName.count_documents(self.queryFilter)
         print(self.queryFilter," | job num: ", allRowsNum)
         jobPerLoop  = 100    
-        jobNum      = 1
-        wordNum     = 1
+        jobNum      = 0
+        wordNum     = 0
         remainJobs  = allRowsNum
         while remainJobs > 0:
             jobs = self.collectionSrcJobsCollName.find(
@@ -58,28 +57,53 @@ class WordTokenize:
             # travel through all job rows in range (50 jobs per loop)
             for job in jobs:
                 wordSeq = 1
-                jobWords = custom_tokenizer.word_tokenize(job[self.srcFieldName])
                 # check existing job
                 if( not(self.collectionDstCollName.find_one(
                         {"jobId":job["jobId"]},
                         {'seqNum':1,'_id':0}) is None) ):
                     # remove old word segmented if exist
                     self.collectionDstCollName.remove({"jobId":job["jobId"]},True)
-                # travel through all word rows
-                for jobWord in jobWords:
-                    wordSeq = wordSeq+1
-                    wordNum = wordNum+1
-                    word = {
-                        "jobId" : job["jobId"],
-                        "word_"+self.srcFieldName  : jobWord,
-                        "seqNum": wordSeq,
-                        'lastAct': 'newAdded',
-                        "updateDate" : datetime.today().replace(microsecond=0),
-                        'createDate' : datetime.today().replace(microsecond=0)
-                    }
-                    self.collectionDstCollName.insert_one(word)
-                    if (wordNum%1000)==0:
-                        print('Word num ', wordNum,  "added")
+                # source field is not array
+                if(isinstance( job[self.srcFieldName], list) == False):
+                    jobWords = custom_tokenizer.word_tokenize(job[self.srcFieldName])
+                    # travel through all word rows
+                    for jobWord in jobWords:
+                        wordSeq = wordSeq+1
+                        wordNum = wordNum+1
+                        word = {
+                            "jobId" : job["jobId"],
+                            "word_"+self.srcFieldName  : jobWord,
+                            "seqNum": wordSeq,
+                            'lastAct': 'newAdded',
+                            "updateDate" : datetime.today().replace(microsecond=0),
+                            'createDate' : datetime.today().replace(microsecond=0)
+                        }
+                        self.collectionDstCollName.insert_one(word)
+                        if (wordNum%1000)==0:
+                            print('Word num ', wordNum,  "added")
+                # source field is array
+                elif(isinstance( job[self.srcFieldName], list) == True) :
+                    # fetch array element
+                    elNum = 0
+                    for el in job[self.srcFieldName]:
+                        elNum = elNum + 1
+                        jobWords = custom_tokenizer.word_tokenize(el)
+                        # travel through all word rows
+                        for jobWord in jobWords:
+                            wordSeq = wordSeq+1
+                            wordNum = wordNum+1
+                            word = {
+                                "jobId"         : job["jobId"],
+                                "word_"+self.srcFieldName  : jobWord,
+                                "seqNum"        : wordSeq,
+                                'arrEleNum'     : elNum,
+                                'lastAct'       : 'newAdded',
+                                "updateDate"    : datetime.today().replace(microsecond=0),
+                                'createDate'    : datetime.today().replace(microsecond=0)
+                            }
+                            self.collectionDstCollName.insert_one(word)
+                            if (wordNum%1000)==0:
+                                print('Word num ', wordNum,  "added")   
                 #update lastest action for job to word segmented
                 self.collectionSrcJobsCollName.update_one(
                     {'jobId':job["jobId"]},
@@ -87,5 +111,6 @@ class WordTokenize:
                                 "updateDate"     : datetime.today().replace(microsecond=0)}})
                 jobNum = jobNum+1
                 if (jobNum%100)==0:
-                    print('jobNum ', jobNum,  "added")
+                    print('jobNum ', jobNum,  "segmented")
             remainJobs = self.collectionSrcJobsCollName.count_documents(self.queryFilter)
+        print('----- ', jobNum, 'jobs segmented to ',wordNum,' words -----')
